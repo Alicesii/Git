@@ -101,6 +101,7 @@ b4fa11682c5a00cacdbc103bfbd6795a6dd900b2 (HEAD -> master, feature) second-Git
 $ git checkout feature
 Switched to branch 'feature'
 ```
+
 现在Head就指向feature分支了。
 
 图13
@@ -206,7 +207,6 @@ Date:   Thu Aug 2 22:23:11 2018 +0800
 图16
 项目分叉历史
 
-<<<<<<< HEAD
 使用`git log`命令查看各个分支当前所指的对象以及分支的历史，利用`--oneline`、`--decorate`、`--graph`、`--all`参数，它会输出你的提交历史、各个分支的指向以及项目的分支分叉情况。
 
 ```
@@ -218,7 +218,3 @@ $ git log --pretty=oneline --decorate --graph --all
 * 9c36a3dba4a14c96b650555658a01f211c9274bf first-Git
 * 6beec10a754d1614768a055bff34aa007910b30e my project
 ```
-=======
-使用`git log`命令查看各个分支当前所指的对象，利用--oneline、--decorate、--graph、--all参数，它会输出你的提交历史、各个分支
-
->>>>>>> 81e177d48f737ef1355ea91f94b3ec0a6e5fcc73
