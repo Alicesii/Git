@@ -59,7 +59,7 @@ iss16分支随着工作的进展向前推进
 
 当你接到电话时，有个紧急问题等待你来解决，在Git下，不需要把这个紧急问题和iss16的修改混在一起，也不需要还原#16问题的修改，然后再添加关于这个紧急问题的修改，最后将这个修改提交到线上分支。你所需要做的仅仅是切回到master分支。
 
-在切回到master分支之前，必修保证所有的工作目录和暂存区中的修改的文件是被提交的状态。
+在切回到master分支之前，必须保证所有的工作目录和暂存区中的修改的文件是被提交的状态。
 
 ```
 $ git status
@@ -97,7 +97,7 @@ Switched to branch 'master'
 $ git merge hotfix
 Updating f42c576..3a0874c
 Fast-forward
- index.htmml | 2 ++
+ README.md | 2 ++
  1 file changed, 2 insertions(+)
 ```
 
@@ -194,4 +194,106 @@ Automatic merge failed;fix conflicts and then commit the result.
 ```
 
 Git做了合并，但是没有自动地创建一个新的合并提交。Git会暂停下来，等待你去解决合并产生的冲突。
+
+解决冲突的步骤：
+
+* 第一步：使用`git status`命令查看包含合并冲突而处于未合并状态的文件。
+
+```
+$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")
+Unmerged paths:
+  (use "git add <file>..." to mark resolution)
+  both modified: README.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+任何因包含合并冲突而有待解决的文件，都会以未合并状态标识出来。
+
+* 第二步：Git会在有冲突的文件中加入标准的冲突解决标记，你可以打开这些包含冲突的文件手动解决冲突。出现冲突的文件会包含一些特殊区段。
+
+```
+<<<<<<< HEAD:README.md
+<div id="footer">contact : email.support@github.com</div>
+=======
+<div id="footer">
+ please contact us at support@github.com
+</div>
+>>>>>>> iss16:README.md
+```
+
+这表示HEAD所指示的版本(master分支所在的位置)在=======的上半部分，而`iss16`分支所指示的版本在=======的下半部分。
+
+* 第三步：为了解决冲突，你必须选择使用由=======分割的两部分中的一个，或者也可以自行合并这些内容。
+
+```
+//选择上半部分或者下半部分
+<div id="footer">
+ please contact us at support@github.com
+</div>
+```
+
+该解决方案仅保留了其中一个分支的修改，并且<<<<<<<,=======,和>>>>>>>这些行被完全删除。
+
+当解决了所有文件里的冲突之后，对所有文件使用git add命令将其标记为冲突已解决。
+
+
+自行合并冲突：`$ git mergetool`命令
+
+该命令会为你启动一个合适的可视化合并工具，并带领你一步一步解决这些冲突.
+
+```
+$ git mergetool
+
+This message is displayed because 'merge.tool' is not configured.
+See 'git meergetool --tool-help' or 'git help config' for more details.
+'git mergetool' will now attempt to use one of the following tools:
+opendiff kdiff3 tkdiff xxdiff meld tortoisemerge gvimdiff diffuse
+diffmerge ecmerge p4merge araxis bc3 codecompare vimdiff emerge
+Merging:
+README.md
+
+Normal merge conflict for 'README.md':
+  {local}: modified file
+  {remote}: modified file
+Hit return to start merge resolution tool (opendiff):
+```
+
+当退出合并工具之后，Giit会询问刚才的合并是否成功。如果回答是，Git会暂存那些文件以表明冲突已解决：
+
+```
+$ git status
+On branch master
+All conflicts fixed but you are still merging.
+  (use "git commit" to conclude merge)
+Changes to be committed:
+
+  modified: README.md
+```
+
+当所有的有冲突的文件都已经暂存，就可以提交到Git仓库中。
+
+```
+$ git commit -m "solve merge branch"
+
+Merge branch 'iss16'
+
+Conflicts:
+  README.md
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+# .git
+# and try again.
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#    modified: README.md
+```
 
