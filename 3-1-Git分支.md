@@ -207,7 +207,7 @@ Date:   Thu Aug 2 22:23:11 2018 +0800
 图16
 项目分叉历史
 
-使用`git log`命令查看各个分支当前所指的对象以及分支的历史，利用`--oneline`、`--decorate`、`--graph`、`--all`参数，它会输出你的提交历史、各个分支的指向以及项目的分支分叉情况。
+使用`git log`命令查看各个分支当前所指的对象以及分支的历史，利用--oneline、--decorate、--graph、--all参数，它会输出你的提交历史、各个分支的指向以及项目的分支分叉情况。
 
 ```
 $ git log --pretty=oneline --decorate --graph --all
