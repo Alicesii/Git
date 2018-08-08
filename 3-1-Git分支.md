@@ -28,7 +28,7 @@ Date:   Thu Aug 2 22:23:11 2018 +0800
 
 也就是说，Git仓库中有五个对象，三个blob对象(保存着文件快照)、一个树对象(记录着目录结构和blob对象索引)以及一个提交对象(包含着指向树对象的指针和所有提交信息)。
 
-图8
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_8.png)
 首次提交对象及其树结构
 
 做些修改后再次提交，那么这次产生的提交对象会包含一个指向上次提交对象(父对象)的指针。
@@ -54,12 +54,12 @@ Date:   Thu Aug 2 22:23:11 2018 +0800
     my project
 ```
 
-图9
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_9.png)
 提交对象及其父对象
 
 Git的分支，其实本质上仅仅是指向提交对象的可变指针。Git的默认分支名字是master。在多次提交操作之后，你其实已经有一个指向最后那个提交对象的master分支，它会在每次的提交操作中自动向前移动。
 
-图10
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_10.png)
 分支及其提交历史
 
 ### 1.1.分支创建
@@ -72,14 +72,14 @@ git branch feature
 
 也就是在当前所在的提交对象上创建一个指针
 
-图11
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_11.png)
 两个指向相同提交历史的分支
 
 是不是有疑问，Git怎么知道当前在哪一个分支上呢？
 
 在Git中，它有一个名为HEAD的特殊指针，指向当前所在的本地分支。`git branch`命令仅仅创建一个新分支，并不会自动切换到新分支，现在仍然在master分支。
 
-图12
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_12.png)
 HEAD指向当前所在的分支
 
 使用`git log`命令查看各个分支当前所指的对象，需要使用--decorate参数。
@@ -104,7 +104,7 @@ Switched to branch 'feature'
 
 现在Head就指向feature分支了。
 
-图13
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_13.png)
 HEAD指向当前所在的分支
 
 利用分支的形式有什么优点呢，我们可以来看一下：
@@ -145,16 +145,17 @@ b4fa11682c5a00cacdbc103bfbd6795a6dd900b2 (master) second-Git
 6beec10a754d1614768a055bff34aa007910b30e my project
 ```
 
-图14
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_14.png)
 HEAD分支随着提交操作自动向前移动
 
 从图中可以，feature分支向前移动了，但master分支却没有，我们可以切换到master分支。
+
 ```
 $ git checkout master
 Switched to branch 'master'
 ```
 
-图15
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_15.png)
 HEAD指针随着分支的变化移动
 
 `git checkout`命令有两个功能：
@@ -204,7 +205,7 @@ Date:   Thu Aug 2 22:23:11 2018 +0800
 
 这时，项目的提交历史已经产生了分支，因为刚才创建了一个新分支，并切换过去进行了一些工作，随后又切换回master分支进行了另外一些工作。
 
-图16
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_16.png)
 项目分叉历史
 
 使用`git log`命令查看各个分支当前所指的对象以及分支的历史，利用--oneline、--decorate、--graph、--all参数，它会输出你的提交历史、各个分支的指向以及项目的分支分叉情况。

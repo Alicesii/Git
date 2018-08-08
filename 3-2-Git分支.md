@@ -22,7 +22,7 @@
 
 假设存在一个正在开发过程中的项目，并且已经有了一些提交。
 
-图17
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_17.png)
 一个简单提交历史
 
 如果你需要解决编号为#16的需求问题，你需要创建一个新的分支，然后切换到该分支上。
@@ -43,7 +43,7 @@ $ git checkout iss16
 Switched to branch 'iss16'
 ```
 
-图18
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_18.png)
 创建一个新分支指针
 
 现在可以开始在iss16分支上解决编号#16的需求，在此过程中，你做了一些提交，所以iss16分支在不断的向前推进，此时HEAD指针指向了iss16分支上。
@@ -54,7 +54,7 @@ $ git commit -a -m 'new branch'
 
 ```
 
-图19
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_19.png)
 iss16分支随着工作的进展向前推进
 
 当你接到电话时，有个紧急问题等待你来解决，在Git下，不需要把这个紧急问题和iss16的修改混在一起，也不需要还原#16问题的修改，然后再添加关于这个紧急问题的修改，最后将这个修改提交到线上分支。你所需要做的仅仅是切回到master分支。
@@ -84,7 +84,7 @@ $ git commit -a -m 'fixed hotfix branch'
 ```
 
 
-图20
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_20.png)
 基于master分支的紧急问题分支hotfix branch
 
 注意：当切换分支的时候，Git会重置你的工作目录，使其看起来像回到了你在那个分支上最后一次提交的样子。Git会自动添加、删除、修改文件以确保此时你的工作目录和这个分支最后一次提交时的样子一模一样。
@@ -102,7 +102,7 @@ Fast-forward
 ```
 
 
-图21
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_21.png)
 master被快进到hotfix
 
 `Fast-forward`的解释：
@@ -139,7 +139,7 @@ $ git commit -a -m 'fixed iss16 branch'
 ```
 
 
-图22
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_22.png)
 继续在iss16分支上工作
 
 在hotfix分支上所做的工作并没有包含到iss16分支中。
@@ -163,12 +163,12 @@ README.md | 1 +
 
 Git会使用两个分支的末端所指的快照(C4和C5)以及这两个分支的工作祖先(C2)，做一个简单的三方合并。
 
-图23
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_23.png)
 一次典型合并中所用到的三个快照
 
 Git将三方合并的结果做了一个新的快照并且自动创建一个新的提交指向它，这个被称作一次合并提交
 
-图24
+![ ](http://images.cnblogs.com/cnblogs_com/cliy-10/1239045/o_24.png)
 一个合并提交
 
 Git会自行决定选取哪一个提交作为最优的共同祖先，并以此作为合并的基础。
@@ -274,7 +274,7 @@ Changes to be committed:
   modified: README.md
 ```
 
-当所有的有冲突的文件都已经暂存，就可以提交到Git仓库中。
+* 第四步：当所有的有冲突的文件都已经暂存，就可以提交到Git仓库中。
 
 ```
 $ git commit -m "solve merge branch"
