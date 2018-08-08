@@ -262,7 +262,7 @@ Normal merge conflict for 'README.md':
 Hit return to start merge resolution tool (opendiff):
 ```
 
-当退出合并工具之后，Giit会询问刚才的合并是否成功。如果回答是，Git会暂存那些文件以表明冲突已解决：
+当退出合并工具之后，Git会询问刚才的合并是否成功。如果回答是，Git会暂存那些文件以表明冲突已解决：
 
 ```
 $ git status
